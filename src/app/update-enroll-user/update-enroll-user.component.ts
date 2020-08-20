@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EnrollUserService } from '../enroll-user.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,7 @@ export class UpdateEnrollUserComponent implements OnInit {
   userInfo : any = [];
   paramsData : string;
   successFullUpdate : boolean;
+  
 
   constructor(private _enrollUserListService : EnrollUserService, private _router : Router, private _activeRouter : ActivatedRoute) { }
 
@@ -38,7 +39,7 @@ export class UpdateEnrollUserComponent implements OnInit {
     } if(formData.name === "" || formData.name === undefined) {
       formData["name"] = this.userInfo.name ;
     } if(formData.dateOfBirth === "" || formData.dateOfBirth === undefined) {
-      formData["name"] = this.userInfo.dateOfBirth ;
+      formData["dateOfBirth"] = this.userInfo.dateOfBirth ;
     }
     formData["active"] = JSON.parse(formData["active"]);
     console.log("formData", formData);
@@ -46,6 +47,7 @@ export class UpdateEnrollUserComponent implements OnInit {
     this._enrollUserListService.updateEnrollUserInfo(this.paramsData, formData).subscribe((data)=>{  
       if(data){
         this.userInfo = data;
+        this.successFullUpdate = true;
         console.log("user Info", this.userInfo)
       }
     });

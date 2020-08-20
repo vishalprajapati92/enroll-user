@@ -3,16 +3,17 @@
     <div class="card-body">
       <form class="text-black" #enrollUserDetail = "ngForm" (ngSubmit) = "onClickSubmit(enrollUserDetail.value)">
         <div class="form-group">
-          <label class="control-label">Full name :</label>
-          <input class="form-control" type="text" autocomplete="name" name="name" value={{this.userInfo.name}} [(ngModel)] = "enrollUserDetail.name"  placeholder="Please enter Name"
-            #name="ngModel"/>
+          <label for="name" class="control-label">Full name :</label>
+          <input class="form-control" type="text" id="name" autocomplete="name" name="name" value={{this.userInfo.name}} [(ngModel)] = "enrollUserDetail.name"  placeholder="Please enter Name"
+            #name="ngModel" required/>
         </div>
         <div *ngIf = '!name.valid && (name.touched)'>
-          <div class="alert alert-danger" *ngIf = 'name.errors.required'>Please enter email </div>
+          <div class="alert alert-danger" *ngIf = 'name.errors.required'>Please enter name </div>
         </div>
         <div class="form-group">
-          <label class="control-label">Date of Birth : <input type="date" name="dateOfBirth" placeholder="yyyy-mm-dd" value={{this.userInfo.dateOfBirth}} [(ngModel)] = "enrollUserDetail.dateOfbirth" min="1997-01-01" max="2030-12-31" #dob="ngModel"> 
-          </label>
+          <label class="control-label">Date of Birth : </label>
+          <input type="date" name="dateOfBirth" placeholder="yyyy-mm-dd" value={{this.userInfo.dateOfBirth}} [(ngModel)] = "enrollUserDetail.dateOfbirth" min="1997-01-01" max="2030-12-31" 
+          #dob="ngModel" required/>
           <!-- <input class="form-control" type="text" ngbDatepicker name="dateOfbirth"  required   #dob="ngModel"/> -->
         </div>
         <div *ngIf = '!dob.valid  && (dob.touched) '>
@@ -22,20 +23,20 @@
         <div class="form-group">
           <label class="control-label">Acitvation status :</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="active" ngModel = "status" id="exampleRadios1" value=true checked>
+            <input class="form-check-input" type="radio" name="active" [ngModel]="enrollUserDetail.active" id="exampleRadios1" [value]=true checked>
             <label class="form-check-label" for="exampleRadios1">
               True
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="active" ngModel = "status" id="exampleRadios2" value=false>
+            <input class="form-check-input" type="radio" name="active"  [ngModel]="enrollUserDetail.active" id="exampleRadios2" [value]=false>
             <label class="form-check-label" for="exampleRadios2">
               False
             </label>
           </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled] = "!enrollUserDetail.valid">Submit</button>
             <button type="button" class="btn btn-primary ml-3" (click)="backWindow()">Back</button>
         </div>
         <div class="alert alert-success" *ngIf = 'successFullUpdate'>Records Update successfull </div>
