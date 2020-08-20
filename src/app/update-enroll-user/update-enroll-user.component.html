@@ -3,6 +3,9 @@
     <div class="card-body">
       <form class="text-black" #enrollUserDetail = "ngForm" (ngSubmit) = "onClickSubmit(enrollUserDetail.value)">
         <div class="form-group">
+          <label for="name" class="control-label">Id : {{this.userInfo.id}}</label>
+        </div>
+        <div class="form-group">
           <label for="name" class="control-label">Full name :</label>
           <input class="form-control" type="text" id="name" autocomplete="name" name="name" value={{this.userInfo.name}} [(ngModel)] = "enrollUserDetail.name"  placeholder="Please enter Name"
             #name="ngModel" required/>
@@ -11,15 +14,10 @@
           <div class="alert alert-danger" *ngIf = 'name.errors.required'>Please enter name </div>
         </div>
         <div class="form-group">
-          <label class="control-label">Date of Birth : </label>
-          <input type="date" name="dateOfBirth" placeholder="yyyy-mm-dd" value={{this.userInfo.dateOfBirth}} [(ngModel)] = "enrollUserDetail.dateOfbirth" min="1997-01-01" max="2030-12-31" 
-          #dob="ngModel" required/>
-          <!-- <input class="form-control" type="text" ngbDatepicker name="dateOfbirth"  required   #dob="ngModel"/> -->
+          <label class="control-label">Date of Birth : {{this.userInfo.dateOfBirth}} </label>
+          <!-- <input type="date" name="dateOfBirth" placeholder="yyyy-mm-dd" value={{this.userInfo.dateOfBirth}} [(ngModel)] = "enrollUserDetail.dateOfbirth" min="1997-01-01" max="2030-12-31" 
+          #dob="ngModel" required/> -->
         </div>
-        <div *ngIf = '!dob.valid  && (dob.touched) '>
-          <div class="alert alert-danger" *ngIf = 'dob.errors.required'>Please enter date of birth</div>
-        </div>
-
         <div class="form-group">
           <label class="control-label">Acitvation status :</label>
           <div class="form-check">

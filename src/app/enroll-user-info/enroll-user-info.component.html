@@ -5,16 +5,20 @@
         <div class="container-fluid">
                 <form class="form">
                         <div class="form-group">
+                            <label for="Name" class="col-3">id : </label>
+                            <label class="col-6"> {{userInfo.id}} </label>
+                        </div>
+                        <div class="form-group">
                             <label for="Name" class="col-3">Name : </label>
-                            <label class="col-3"> {{userInfo.name}} </label>
+                            <label class="col-6"> {{userInfo.name}} </label>
                         </div>
                         <div class="form-group">
                                 <label for="DateOfBirth" class="col-3">Date of birth : </label>
-                                <label class="col-3">  {{userInfo.dateOfBirth}} </label>
+                                <label class="col-6">  {{userInfo.dateOfBirth}} </label>
                         </div>
                         <div class="form-group">
                                 <label for="ActiveStatus" class="col-3">Activation Status : </label>
-                                <label class="col-3"> {{userInfo.active}}</label>
+                                <label class="col-6"> {{userInfo.active}}</label>
                         </div>
                 </form>
         </div>

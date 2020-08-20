@@ -3,6 +3,7 @@
     <div class="table-responsive">
       <table class="table table-striped table-dark table-bordered">
         <tr class="bg-success">
+          <th> id </th>
           <th> Name </th>
           <th> Data of birth </th>
           <th> Active Status </th>
@@ -16,6 +17,7 @@
         <!-- {{userInfo | json}} <br> -->
   
         <tr *ngFor = "let userIn of userInfo | enrollUser : filterBy" >
+            <td> {{userIn.id}} </td>
             <td> {{userIn.name}} </td>
             <td> {{userIn.dateOfBirth}} </td>
             <td> {{userIn.active}} </td>
