@@ -1,0 +1,26 @@
+<div class="card text-white">
+    <div class="card-header  bg-primary"> Enroll User Information
+    </div>
+    <div class="panel panel-body bg-secondary">
+        <div class="container-fluid">
+                <form class="form">
+                        <div class="form-group">
+                            <label for="Name" class="col-3">Name : </label>
+                            <label class="col-3"> {{userInfo.name}} </label>
+                        </div>
+                        <div class="form-group">
+                                <label for="DateOfBirth" class="col-3">Date of birth : </label>
+                                <label class="col-3">  {{userInfo.dateOfBirth}} </label>
+                        </div>
+                        <div class="form-group">
+                                <label for="ActiveStatus" class="col-3">Activation Status : </label>
+                                <label class="col-3"> {{userInfo.active}}</label>
+                        </div>
+                </form>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-success" (click) = "backWindow()">Back</button> 
+    </div>
+</div>
+

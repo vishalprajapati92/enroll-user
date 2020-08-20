@@ -1,0 +1,26 @@
+
+<div>
+    <div class="table-responsive">
+      <!-- <div *ngFor="let item of userInfo | keyvalue">
+        {{item.key.name}}:{{item.value}}
+      </div> -->
+      <table class="table table-striped table-dark table-bordered">
+        <tr class="bg-success">
+          <th> Name </th>
+          <th> Data of birth </th>
+          <th> Active Status </th>
+          <th> </th>
+          <th> </th>
+        </tr>   
+        <!-- {{userInfo | json}} <br> -->
+  
+        <tr *ngFor = "let userIn of userInfo">
+            <td> {{userIn.name}} </td>
+            <td> {{userIn.dateOfBirth}} </td>
+            <td> {{userIn.active}} </td>
+            <td> <button class="btn btn-primary" (click)="viewDetail(userIn)"> View detail</button> </td>
+            <td> <button class="btn btn-primary" (click)="updateDetail(userIn)"> Update detail</button> </td>
+        </tr> 
+      </table>
+    </div>
+  </div>
