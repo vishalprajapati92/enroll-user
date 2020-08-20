@@ -13,6 +13,7 @@ export class EnrollUserComponent implements OnInit {
   pageTitle : string  = "Welcome product page";
   userInfo : any = [];
   showAndHide : boolean = true;
+  filterBy :string;
 
   constructor(private _enrollUserListService : EnrollUserService, private _router : Router ) { }
 

@@ -11,6 +11,7 @@ import { UpdateEnrollUserComponent } from './update-enroll-user/update-enroll-us
 import { HeaderInterceptor } from './header.interceptor';
 import {EnrollUserService } from './enroll-user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EnrollUserPipe } from './enroll-user.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     EnrollUserComponent,
     EnrollUserInfoComponent,
-    UpdateEnrollUserComponent
+    UpdateEnrollUserComponent,
+    EnrollUserPipe
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,21 @@
 
 <div>
     <div class="table-responsive">
-      <!-- <div *ngFor="let item of userInfo | keyvalue">
-        {{item.key.name}}:{{item.value}}
-      </div> -->
       <table class="table table-striped table-dark table-bordered">
         <tr class="bg-success">
           <th> Name </th>
           <th> Data of birth </th>
           <th> Active Status </th>
-          <th> </th>
+          <th>  
+            <div>
+              <input type="text" [(ngModel)]="filterBy" class="form-control" placeholder="search by name" />
+            </div> 
+          </th>
           <th> </th>
         </tr>   
         <!-- {{userInfo | json}} <br> -->
   
-        <tr *ngFor = "let userIn of userInfo">
+        <tr *ngFor = "let userIn of userInfo | enrollUser : filterBy" >
             <td> {{userIn.name}} </td>
             <td> {{userIn.dateOfBirth}} </td>
             <td> {{userIn.active}} </td>
