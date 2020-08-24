@@ -13,7 +13,8 @@ export class UpdateEnrollUserComponent implements OnInit {
   userInfo : any = [];
   paramsData : string;
   successFullUpdate : boolean;
-  
+  activationStatus : boolean;
+
 
   constructor(private _enrollUserListService : EnrollUserService, private _router : Router, private _activeRouter : ActivatedRoute) { }
 
@@ -28,26 +29,28 @@ export class UpdateEnrollUserComponent implements OnInit {
     this._enrollUserListService.getEnrollesUserDetails(this.paramsData).subscribe((data)=>{  
       if(data){
         this.userInfo = data;
+        this.activationStatus = this.userInfo.active;
         console.log("user Info", this.userInfo)
       }
     });
   }
 
   onClickSubmit(formData) {
-    if(formData.active === "" || formData.active === "status") {
-      formData["active"] = true;
-    } if(formData.name === "" || formData.name === undefined) {
-      formData["name"] = this.userInfo.name ;
-    } if(formData.dateOfBirth === "" || formData.dateOfBirth === undefined) {
-      formData["dateOfBirth"] = this.userInfo.dateOfBirth ;
-    }
-    formData["active"] = JSON.parse(formData["active"]);
-    console.log("formData", formData);
+    // if(formData.active === "" || formData.active === "status") {
+    //   formData["active"] = true;
+    // } if(formData.name === "" || formData.name === undefined) {
+    //   formData["name"] = this.userInfo.name ;
+    // } if(formData.dateOfBirth === "" || formData.dateOfBirth === undefined) {
+    //   formData["dateOfBirth"] = this.userInfo.dateOfBirth ;
+    // }
+    // formData["active"] = JSON.parse(formData["active"]);
+    // console.log("formData", formData);
   
     this._enrollUserListService.updateEnrollUserInfo(this.paramsData, formData).subscribe((data)=>{  
       if(data){
         this.userInfo = data;
         this.successFullUpdate = true;
+        this.activationStatus = this.userInfo.active;
         console.log("user Info", this.userInfo)
       }
     });

@@ -1,30 +1,53 @@
 <div class="card text-white">
-    <div class="card-header  bg-primary"> Enroll User Information
+    <div class="card-header  bg-primary"> {{title}}
     </div>
-    <div class="panel panel-body bg-secondary">
-        <div class="container-fluid">
-                <form class="form">
-                        <div class="form-group">
-                            <label for="Name" class="col-3">id : </label>
-                            <label class="col-6"> {{userInfo.id}} </label>
+    <div class="card-body bg-secondary">
+        <form class="text-black" #enrollUserDetail="ngForm" (ngSubmit)="onClickSubmit(enrollUserDetail.value)">
+                <div class="form-group row">
+                    <label for="Name" class="col-3">id : </label>
+                    <label class="col-6"> {{userInfo.id}} </label>
+                </div>
+                <div class="form-group row">
+                    <label for="Name" class="col-3">Name : </label>
+                    <label *ngIf=!this.editValue class="col-5"> {{userInfo.name}} </label>
+                    <div *ngIf = this.editValue>
+                        <input class="form-control ml-3" type="text" placeholder="Please enter Name" name="name" [(ngModel)]="userInfo.name"
+                            #fullName="ngModel" required/>
+                        <div *ngIf = '!fullName.valid && (fullName.touched)'>
+                            <div class="alert alert-danger" *ngIf = 'fullName.errors.required'>Please enter name </div>
                         </div>
-                        <div class="form-group">
-                            <label for="Name" class="col-3">Name : </label>
-                            <label class="col-6"> {{userInfo.name}} </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="DateOfBirth" class="col-3">Date of birth : </label>
+                        <label class="col-6" name="dateOfBirth" [(ngModel)]="userInfo.dateOfBirth">  {{userInfo.dateOfBirth}} </label>
+                </div>
+                <div class="form-group row">
+                        <label for="ActiveStatus" class="col-3">Activation Status : </label>
+                        <label *ngIf=!this.editValue class="col-6"> {{userInfo.active}} </label>
+                        <div class="row" *ngIf="this.editValue">
+                            <div class="form-check ml-4">
+                                <input class="form-check-input" type="radio" name="active" [ngModel]="activationStatus" id="exampleRadios1" [value]=true />
+                                <label class="form-check-label" for="exampleRadios1">
+                                    True
+                                </label>
+                            </div>
+                            <div class="form-check ml-3">
+                                <input class="form-check-input" type="radio" name="active" [ngModel]="activationStatus" id="exampleRadios2" [value]=false />
+                                <label class="form-check-label" for="exampleRadios2">
+                                    False
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-group">
-                                <label for="DateOfBirth" class="col-3">Date of birth : </label>
-                                <label class="col-6">  {{userInfo.dateOfBirth}} </label>
-                        </div>
-                        <div class="form-group">
-                                <label for="ActiveStatus" class="col-3">Activation Status : </label>
-                                <label class="col-6"> {{userInfo.active}}</label>
-                        </div>
-                </form>
-        </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-success " type="submit" *ngIf=this.editValue [disabled] = "!enrollUserDetail.valid">Save</button> 
+                    <button class="btn btn-success ml-3 " *ngIf=this.editValue (click) = "withoutSave()">Back</button> 
+                    <button class="btn btn-success " *ngIf=!this.editValue (click) = "backWindow()">Back</button> 
+                    <button class="btn btn-success ml-3"  *ngIf=!this.editValue (click) = "editData()">Edit</button> 
+                </div>
+        </form>
     </div>
-    <div class="card-footer">
-        <button class="btn btn-success" (click) = "backWindow()">Back</button> 
-    </div>
+   
 </div>
 
